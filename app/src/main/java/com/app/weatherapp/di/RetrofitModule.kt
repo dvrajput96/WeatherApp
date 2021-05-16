@@ -1,6 +1,7 @@
 package com.app.weatherapp.di
 
 import com.app.weatherapp.retrofit.WeatherRetrofit
+import com.app.weatherapp.util.Constant
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -35,7 +36,7 @@ object RetrofitModule {
         httpClient.addInterceptor(logging)
 
         return Retrofit.Builder()
-            .baseUrl("https://api.openweathermap.org/")
+            .baseUrl(Constant.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(httpClient.build())
     }
