@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clMainContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_normal"
+    tools:context=".ui.MainActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivLoading"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_120sdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_loading" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTemperature"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:fontFamily="@font/roboto_black"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="0dp"
+        android:lineSpacingMultiplier="1.2"
+        android:paddingStart="@dimen/_26sdp"
+        android:paddingEnd="@dimen/_26sdp"
+        android:textColor="@color/text_color_main_temp"
+        android:textSize="96sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="20" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_thin"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="0dp"
+        android:lineSpacingMultiplier="1.4"
+        android:paddingStart="@dimen/_26sdp"
+        android:paddingEnd="@dimen/_26sdp"
+        android:textColor="@color/text_color_city"
+        android:textSize="36sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTemperature"
+        tools:text="@tools:sample/lorem" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvForecastTemp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="62dp"
+        android:background="@color/white"
+        android:paddingTop="16dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCity"
+        tools:listitem="@layout/item_forecast" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSomethingWentWrong"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_thin"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="0dp"
+        android:paddingStart="@dimen/_26sdp"
+        android:paddingEnd="@dimen/_26sdp"
+        android:text="@string/something_went_wrong_at_our_end"
+        android:textColor="@color/white"
+        android:textSize="54sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnRetry"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRetry"
+        android:layout_width="@dimen/_85sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:background="@color/bg_retry"
+        android:text="@string/retry"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSomethingWentWrong" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/groupFailure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="btnRetry,tvSomethingWentWrong" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/groupSuccess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="tvTemperature,tvCity" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
